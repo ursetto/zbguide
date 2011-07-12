@@ -21,7 +21,7 @@
                    (let ((msg (receive-message* vent)))
                      (print "worker  msg: " msg)
                      (thread-sleep! (/ (string->number msg) 1000))
-                     (send-message sink (number->string n))
+                     (send-message sink (number->string n))   ;; msg # for debugging
                      (loop (+ n 1)))))))
 
 (thread-start! twx)
