@@ -4,6 +4,8 @@
 
 (define s (make-socket 'pull))
 (bind-socket s "tcp://*:5558")
+(define ctrl (make-socket 'pub))
+(bind-socket ctrl "tcp://*:5559")
 
 (receive-message s)  ;; wait for start of batch (0 message)
 
@@ -20,3 +22,5 @@
 (print "Total elapsed time: "
        (- (current-milliseconds) start-time)
        " ms")
+
+(send-message ctrl "KILL")
