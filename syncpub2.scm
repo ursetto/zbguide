@@ -34,6 +34,6 @@
 (close-socket pub)
 
 ;; Not so critical.
-;;(close-socket sync)
-;;(terminate-context (zmq-default-context))
+(close-socket sync)
+(terminate-context (zmq-default-context))
 

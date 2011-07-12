@@ -7,7 +7,7 @@
 (socket-option-set! sub 'subscribe "")
 
 (connect-socket sync "tcp://localhost:5562")
-(thread-sleep! 3)        ;; "ensure" connection to sub is complete (takes > 1 sec here)
+(thread-sleep! 1)        ;; "ensure" connection to sub is complete (takes > 1 sec here)
 (send-message sync "")   ;; signal sync
 
 (define (receive-all)

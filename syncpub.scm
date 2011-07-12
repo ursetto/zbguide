@@ -2,7 +2,7 @@
 ;;    all expected subscribers tell :5562 they are ready
 (use zmq)
 
-(define +subscribers-expected+ 10)
+(define +subscribers-expected+ 20)
 
 (define sync (make-socket 'rep))
 (define pub (make-socket 'pub))
@@ -21,4 +21,7 @@
 
 (send-message pub "END")
 
-
+;; If we don't tidy up we get client hangs.
+(close-socket pub)
+(close-socket sync)
+(terminate-context (zmq-default-context))
