@@ -1,8 +1,7 @@
 ;; pub/sub with envelope address
-;; Note that if you don't insert a sleep, the server will crash as soon
-;; as a client disconnects.  Also the other client may receive tons of
-;; messages afterward.  Perhaps the send buffer is filling up; haven't been
-;; able to mitigate by closing socket or terminating though.
+;; Note that if you don't insert a sleep, the server will crash with SIGPIPE as soon
+;; as a client disconnects.  Also a remaining client may receive tons of
+;; messages afterward.
 
 (use zmq srfi-18)
 
