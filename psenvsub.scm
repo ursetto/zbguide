@@ -5,7 +5,7 @@
 (connect-socket sub "tcp://localhost:5563")
 
 (let loop ()
-  (printf "[~s] " (receive-message sub))
+  (printf "[~a] " (receive-message sub))
   (print (receive-message sub))
   (loop))
 
