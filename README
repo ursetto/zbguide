@@ -1,0 +1,9 @@
+This is my attempt to work through the examples in the ZeroMQ zguide
+using the zmq egg in Chicken.  All code is MIT-licensed.
+
+This repository is not forked from the official zguide repository.
+It could become the basis for an official Chicken translation of
+zguide, but for now, the intent is to help improve the zmq egg
+and make sure we can actually implement all the examples.
+
+Jim Ursetto
