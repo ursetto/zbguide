@@ -1,6 +1,7 @@
 ;; helper module for example applications, like zhelpers.h
 
-(use (only srfi-13 string-pad string-every))
+(use (only srfi-13 string-pad string-every)
+     srfi-4)
 
 (define (u8vector-every u8 pred?)
   (let loop ((i 0))
