@@ -16,6 +16,8 @@
 (define (worker-task)
   (let* ((ctx (make-context 1))
          (worker (make-socket 'req ctx)))
+    ;; We set the socket identity to a random string as in the original;
+    ;; but we can safely send and receive NULs so it's not required.
     (randomize-socket-identity! worker)
     (connect-socket worker "ipc://routing.ipc")
 
