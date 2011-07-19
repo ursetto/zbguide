@@ -1,7 +1,9 @@
 ;; helper module for example applications, like zhelpers.h
 
 (use (only srfi-13 string-pad string-every)
-     srfi-4)
+     srfi-4
+     random-bsd   ;; for randomize-socket-identity!
+     )
 
 (define (u8vector-every u8 pred?)
   (let loop ((i 0))
@@ -43,6 +45,10 @@
                   (loop (+ var 1))))))
     ((dotimes (var times) e0 e1 ...)
      (dotimes (var times (void)) e0 e1 ...))))
+
+(define-syntax forever
+  (syntax-rules () ((forever e0 e1 ...)
+                    (let loop () e0 e1 ... (loop)))))
 
 (define (thread-millisleep! ms)
   (thread-sleep! (/ ms 1000)))
