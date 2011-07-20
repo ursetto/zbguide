@@ -11,10 +11,6 @@
 (define +num-clients+ 10)
 (define +num-workers+ 3)
 
-(define (receive-empty-message s)
-  (assert (string=? "" (receive-message* s)))
-  "")
-
 (define frontend (make-socket 'xrep))
 (define backend  (make-socket 'xrep))
 (bind-socket frontend "ipc://frontend.ipc")
