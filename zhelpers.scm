@@ -73,3 +73,6 @@
           (loop (cons frame msg))
           (reverse (cons frame msg))))))
 
+;; Insert address and "" in front of msg list (i.e., route message to address).
+(define (wrap address msg)
+  (cons address (cons "" msg)))
