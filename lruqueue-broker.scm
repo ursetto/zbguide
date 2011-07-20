@@ -40,8 +40,8 @@
               (else
                (receive-empty-message backend)
                (let ((reply (receive-message* backend)))
-                 (send-multipart-message frontend
-                                         client-addr "" reply)
+                 (send-multipart-message* frontend
+                                          client-addr "" reply)
                  (printf "Worker ~A -> ~A  ~S\n"
                          worker-addr client-addr reply)
                  (set! clients (- clients 1))
@@ -58,9 +58,9 @@
            (empty       (receive-empty-message frontend))
            (request     (receive-message* frontend))
            (worker-addr (queue-remove! q)))
-      (send-multipart-message backend
-                              worker-addr ""
-                              client-addr "" request)
+      (send-multipart-message* backend
+                               worker-addr ""
+                               client-addr "" request)
       (printf "Client ~A -> ~A  ~S\n"
               client-addr worker-addr request)      
       

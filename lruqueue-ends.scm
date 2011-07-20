@@ -43,8 +43,7 @@
      (let ((address (receive-message* worker)))
        (assert (string=? "" (receive-message* worker)))
        (print "Worker: " (receive-message* worker))
-       (send-multipart-message worker address "" "OK")))))
-
+       (send-multipart-message* worker address "" "OK")))))
 
 ;;; main
 

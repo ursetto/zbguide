@@ -50,7 +50,7 @@
     (receive-message* client)   ;; discard empty frame
     (receive-message* client)   ;; discard ready message
     ;; (print "sending to address " address)
-    (send-multipart-message client address ""
+    (send-multipart-message* client address ""
                             "This is the workload")))
 
 ;; Now ask mamas to shut down and report their results
@@ -58,8 +58,8 @@
   (let ((address (receive-message* client)))
     (receive-message* client)
     (receive-message* client)
-    (send-multipart-message client address ""
-                            "END")))
+    (send-multipart-message* client address ""
+                             "END")))
 
 (close-socket client)
 (terminate-context (zmq-default-context))

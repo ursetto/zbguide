@@ -19,7 +19,7 @@
 (thread-sleep! 1)
 
 ;; Send papa address, address stack, empty part, and request
-(send-multipart-message
+(send-multipart-message*
  client
  "A" "address 3" "address 2" "address 1" ""
  "This is the workload")

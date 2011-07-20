@@ -53,7 +53,7 @@
 (define (thread-millisleep! ms)
   (thread-sleep! (/ ms 1000)))
 
-(define (send-multipart-message s . parts)
+(define (send-multipart-message s parts)
   (let loop ((parts parts))
     (cond ((null? parts)
            (error 'send-multipart-message "Empty message"))
@@ -62,3 +62,14 @@
           (else
            (send-message s (car parts) send-more: #t)
            (loop (cdr parts))))))
+(define (send-multipart-message* s . parts)
+  (send-multipart-message s parts))
+
+(define (receive-multipart-message s)
+  (let loop ((msg '()))
+    (let* ((frame (receive-message* s))
+           (more? (socket-option s 'rcvmore)))
+      (if more?
+          (loop (cons frame msg))
+          (reverse (cons frame msg))))))
+
